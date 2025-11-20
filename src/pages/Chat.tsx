@@ -4,6 +4,8 @@ import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
+import aiChatIllustration from "@/assets/ai-chat-illustration.png";
+import echoMascot from "@/assets/echo-mascot.png";
 
 interface Message {
   role: "user" | "assistant";
@@ -68,7 +70,7 @@ const Chat = () => {
             </Button>
           </Link>
           <div className="flex items-center gap-2">
-            <Shield className="h-6 w-6 text-primary" />
+            <img src={echoMascot} alt="AI Assistant" className="h-8 w-8 rounded-full" />
             <h1 className="text-xl font-bold text-foreground">AI Assistant</h1>
           </div>
         </div>
@@ -77,6 +79,17 @@ const Chat = () => {
       {/* Messages */}
       <main className="flex-1 overflow-y-auto px-4 py-6">
         <div className="max-w-4xl mx-auto space-y-4">
+          {messages.length === 0 && (
+            <div className="flex flex-col items-center justify-center py-12 text-center">
+              <img 
+                src={aiChatIllustration} 
+                alt="AI Assistant" 
+                className="w-48 h-48 mb-6 animate-fade-in"
+              />
+              <h2 className="text-2xl font-bold text-foreground mb-2">Ask me anything!</h2>
+              <p className="text-muted-foreground">I'm here to help with your questions, offline.</p>
+            </div>
+          )}
           {messages.map((msg, idx) => (
             <div key={idx} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
               <Card

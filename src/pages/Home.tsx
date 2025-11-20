@@ -4,17 +4,29 @@ import { ConnectivityStatus } from "@/components/ConnectivityStatus";
 import { FeatureCard } from "@/components/FeatureCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import heroIllustration from "@/assets/hero-illustration.png";
+import echoMascot from "@/assets/echo-mascot.png";
+import backgroundPattern from "@/assets/background-pattern.png";
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-background pb-24">
+    <div className="min-h-screen bg-background pb-24 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div 
+        className="fixed inset-0 z-0 opacity-30"
+        style={{
+          backgroundImage: `url(${backgroundPattern})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      />
       {/* Header */}
-      <header className="sticky top-0 z-10 bg-card border-b border-border px-4 py-4 shadow-sm">
+      <header className="sticky top-0 z-10 bg-card/95 backdrop-blur-sm border-b border-border px-4 py-4 shadow-sm">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Shield className="h-8 w-8 text-primary" />
+            <img src={echoMascot} alt="ECHO-Pi Mascot" className="h-10 w-10 rounded-full" />
             <h1 className="text-2xl font-bold text-foreground">ECHO-Pi</h1>
           </div>
           <ConnectivityStatus />
@@ -22,13 +34,19 @@ const Home = () => {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-4 py-6 space-y-8">
+      <main className="max-w-4xl mx-auto px-4 py-6 space-y-8 relative z-10">
+        {/* Hero Illustration */}
+        <div className="flex justify-center mb-6 animate-fade-in">
+          <img 
+            src={heroIllustration} 
+            alt="ECHO-Pi Hero" 
+            className="w-full max-w-md h-auto rounded-2xl"
+          />
+        </div>
         {/* AI Chat Search */}
         <div className="bg-card rounded-2xl shadow-lg p-6 border border-border">
           <div className="flex items-center gap-3 mb-4">
-            <div className="bg-primary rounded-full p-3">
-              <Shield className="h-6 w-6 text-primary-foreground" />
-            </div>
+            <img src={echoMascot} alt="AI Assistant" className="h-12 w-12 rounded-full" />
             <h2 className="text-xl font-bold text-foreground">Offline AI Assistant</h2>
           </div>
           <div className="relative">

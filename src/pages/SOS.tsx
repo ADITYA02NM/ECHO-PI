@@ -1,6 +1,7 @@
 import { AlertCircle, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import sosIllustration from "@/assets/sos-illustration.png";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -51,7 +52,11 @@ const SOS = () => {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center px-4 text-center">
-        <AlertCircle className="h-32 w-32 text-emergency-foreground mb-8 animate-pulse" />
+        <img 
+          src={sosIllustration} 
+          alt="SOS Alert" 
+          className="w-64 h-64 mb-8 animate-pulse"
+        />
         <h1 className="text-4xl font-bold text-emergency-foreground mb-4">Emergency SOS</h1>
         <p className="text-xl text-emergency-foreground/90 mb-12 max-w-md">
           Press the button below to send an emergency alert to all connected rescue nodes.
