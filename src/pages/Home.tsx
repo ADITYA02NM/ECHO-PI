@@ -77,7 +77,7 @@ const Home = () => {
         <div className="text-center">
           <Link to="/admin/login">
             <Button variant="ghost" className="text-muted-foreground hover:text-foreground">
-              <Settings className="h-4 w-4 mr-2" />
+              <Settings className="h-4 w-4 mr-2 text-primary" />
               Switch to Admin Mode
             </Button>
           </Link>
@@ -90,7 +90,7 @@ const Home = () => {
           size="lg"
           className="fixed bottom-8 left-1/2 -translate-x-1/2 h-20 w-20 rounded-full shadow-2xl bg-emergency hover:bg-emergency/90 border-4 border-card z-50"
         >
-          <AlertCircle className="h-10 w-10" />
+          <AlertCircle className="h-10 w-10 text-white" />
         </Button>
       </Link>
     </div>

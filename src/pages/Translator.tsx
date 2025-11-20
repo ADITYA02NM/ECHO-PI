@@ -45,11 +45,11 @@ const Translator = () => {
         <div className="max-w-4xl mx-auto flex items-center gap-4">
           <Link to="/">
             <Button variant="ghost" size="sm">
-              <ArrowLeft className="h-5 w-5" />
+              <ArrowLeft className="h-5 w-5 text-primary" />
             </Button>
           </Link>
           <div className="flex items-center gap-2">
-            <Languages className="h-6 w-6 text-accent" />
+            <Languages className="h-6 w-6 text-primary" />
             <h1 className="text-xl font-bold text-foreground">Translator</h1>
           </div>
         </div>
@@ -61,7 +61,7 @@ const Translator = () => {
           <div className="text-center">
             <p className="font-semibold text-foreground">English</p>
           </div>
-          <ArrowRight className="h-6 w-6 text-muted-foreground" />
+          <ArrowRight className="h-6 w-6 text-primary" />
           <div className="text-center">
             <p className="font-semibold text-foreground">Hindi</p>
           </div>

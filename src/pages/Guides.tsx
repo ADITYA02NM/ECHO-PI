@@ -57,11 +57,11 @@ const Guides = () => {
         <div className="max-w-4xl mx-auto flex items-center gap-4">
           <Link to="/">
             <Button variant="ghost" size="sm">
-              <ArrowLeft className="h-5 w-5" />
+              <ArrowLeft className="h-5 w-5 text-primary" />
             </Button>
           </Link>
           <div className="flex items-center gap-2">
-            <FileText className="h-6 w-6 text-accent" />
+            <FileText className="h-6 w-6 text-primary" />
             <h1 className="text-xl font-bold text-foreground">Emergency Guides</h1>
           </div>
         </div>
@@ -85,7 +85,7 @@ const Guides = () => {
         ) : (
           <div>
             <Button onClick={() => setSelectedGuide(null)} variant="ghost" className="mb-4">
-              <ArrowLeft className="h-4 w-4 mr-2" />
+              <ArrowLeft className="h-4 w-4 mr-2 text-primary" />
               Back to guides
             </Button>
             <Card className="p-6">

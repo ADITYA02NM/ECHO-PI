@@ -66,7 +66,7 @@ const Chat = () => {
         <div className="max-w-4xl mx-auto flex items-center gap-4">
           <Link to="/">
             <Button variant="ghost" size="sm">
-              <ArrowLeft className="h-5 w-5" />
+              <ArrowLeft className="h-5 w-5 text-primary" />
             </Button>
           </Link>
           <div className="flex items-center gap-2">
@@ -125,7 +125,7 @@ const Chat = () => {
             className="flex-1"
           />
           <Button onClick={() => handleSend()} disabled={isLoading || !input.trim()}>
-            <Send className="h-5 w-5" />
+            <Send className="h-5 w-5 text-white" />
           </Button>
         </div>
       </div>

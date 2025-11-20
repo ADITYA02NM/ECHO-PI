@@ -41,7 +41,7 @@ const Wiki = () => {
         <div className="max-w-4xl mx-auto flex items-center gap-4">
           <Link to="/">
             <Button variant="ghost" size="sm">
-              <ArrowLeft className="h-5 w-5" />
+              <ArrowLeft className="h-5 w-5 text-primary" />
             </Button>
           </Link>
           <div className="flex items-center gap-2">
@@ -65,7 +65,7 @@ const Wiki = () => {
                 className="flex-1"
               />
               <Button onClick={handleSearch} disabled={isSearching}>
-                <Search className="h-5 w-5" />
+                <Search className="h-5 w-5 text-white" />
               </Button>
             </div>
 
@@ -86,7 +86,7 @@ const Wiki = () => {
         ) : (
           <div>
             <Button onClick={() => setSelectedArticle(null)} variant="ghost" className="mb-4">
-              <ArrowLeft className="h-4 w-4 mr-2" />
+              <ArrowLeft className="h-4 w-4 mr-2 text-primary" />
               Back to results
             </Button>
             <Card className="p-6">

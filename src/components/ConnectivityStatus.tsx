@@ -26,12 +26,12 @@ export const ConnectivityStatus = () => {
     <div className="flex items-center gap-2">
       {isConnected ? (
         <>
-          <Wifi className="h-5 w-5 text-success" />
-          <span className="text-sm font-medium text-success">Connected</span>
+          <Wifi className="h-5 w-5 text-primary" />
+          <span className="text-sm font-medium text-primary">Connected</span>
         </>
       ) : (
         <>
-          <WifiOff className="h-5 w-5 text-muted-foreground" />
+          <WifiOff className="h-5 w-5 text-primary/50" />
           <span className="text-sm font-medium text-muted-foreground">Offline</span>
         </>
       )}
