@@ -48,7 +48,7 @@ const AdminLogs = () => {
           <div className="flex items-center gap-4">
             <Link to="/admin/dashboard">
               <Button variant="ghost" size="sm">
-                <ArrowLeft className="h-5 w-5" />
+                <ArrowLeft className="h-5 w-5 text-primary" />
               </Button>
             </Link>
             <div className="flex items-center gap-2">
@@ -57,7 +57,7 @@ const AdminLogs = () => {
             </div>
           </div>
           <Button variant="destructive" size="sm" onClick={clearLogs}>
-            <Trash2 className="h-4 w-4 mr-2" />
+            <Trash2 className="h-4 w-4 mr-2 text-white" />
             Clear Logs
           </Button>
         </div>
@@ -76,7 +76,7 @@ const AdminLogs = () => {
           ))}
           {logs.length === 0 && (
             <Card className="p-8 text-center">
-              <FileText className="h-12 w-12 text-muted-foreground mx-auto mb-3" />
+              <FileText className="h-12 w-12 text-primary/50 mx-auto mb-3" />
               <p className="text-muted-foreground">No logs available</p>
             </Card>
           )}

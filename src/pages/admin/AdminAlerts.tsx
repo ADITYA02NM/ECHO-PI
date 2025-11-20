@@ -61,11 +61,11 @@ const AdminAlerts = () => {
         <div className="max-w-4xl mx-auto flex items-center gap-4">
           <Link to="/admin/dashboard">
             <Button variant="ghost" size="sm">
-              <ArrowLeft className="h-5 w-5" />
+              <ArrowLeft className="h-5 w-5 text-primary" />
             </Button>
           </Link>
           <div className="flex items-center gap-2">
-            <AlertCircle className="h-6 w-6 text-emergency" />
+            <AlertCircle className="h-6 w-6 text-primary" />
             <h1 className="text-xl font-bold text-foreground">SOS Alerts Feed</h1>
           </div>
         </div>
@@ -93,14 +93,14 @@ const AdminAlerts = () => {
                     Acknowledge
                   </Button>
                 ) : (
-                  <CheckCircle className="h-5 w-5 text-success" />
+                  <CheckCircle className="h-5 w-5 text-primary" />
                 )}
               </div>
             </Card>
           ))}
           {alerts.length === 0 && (
             <Card className="p-8 text-center">
-              <AlertCircle className="h-12 w-12 text-muted-foreground mx-auto mb-3" />
+              <AlertCircle className="h-12 w-12 text-primary/50 mx-auto mb-3" />
               <p className="text-muted-foreground">No SOS alerts received</p>
             </Card>
           )}

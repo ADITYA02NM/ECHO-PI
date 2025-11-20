@@ -47,11 +47,11 @@ const AdminNodes = () => {
         <div className="max-w-4xl mx-auto flex items-center gap-4">
           <Link to="/admin/dashboard">
             <Button variant="ghost" size="sm">
-              <ArrowLeft className="h-5 w-5" />
+              <ArrowLeft className="h-5 w-5 text-primary" />
             </Button>
           </Link>
           <div className="flex items-center gap-2">
-            <Wifi className="h-6 w-6 text-success" />
+            <Wifi className="h-6 w-6 text-primary" />
             <h1 className="text-xl font-bold text-foreground">Node Status</h1>
           </div>
         </div>
@@ -73,7 +73,7 @@ const AdminNodes = () => {
             </div>
             <div className="flex items-center justify-between">
               <span className="text-muted-foreground">Status</span>
-              <span className="font-semibold text-success">{nodeStatus.status}</span>
+              <span className="font-semibold text-primary">{nodeStatus.status}</span>
             </div>
           </div>
         </Card>
@@ -81,15 +81,15 @@ const AdminNodes = () => {
         {/* Actions */}
         <div className="space-y-3">
           <Button onClick={pingNode} className="w-full" size="lg">
-            <Radio className="h-5 w-5 mr-2" />
+            <Radio className="h-5 w-5 mr-2 text-white" />
             Ping Node
           </Button>
           <Button onClick={flashLED} className="w-full" size="lg" variant="secondary">
-            <Zap className="h-5 w-5 mr-2" />
+            <Zap className="h-5 w-5 mr-2 text-primary" />
             Flash LED
           </Button>
           <Button onClick={resetNode} className="w-full" size="lg" variant="destructive">
-            <RotateCcw className="h-5 w-5 mr-2" />
+            <RotateCcw className="h-5 w-5 mr-2 text-white" />
             Reset Node
           </Button>
         </div>

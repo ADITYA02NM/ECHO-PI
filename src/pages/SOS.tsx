@@ -44,7 +44,7 @@ const SOS = () => {
       <header className="p-4">
         <Link to="/">
           <Button variant="ghost" size="sm" className="text-emergency-foreground hover:bg-white/20">
-            <ArrowLeft className="h-5 w-5 mr-2" />
+            <ArrowLeft className="h-5 w-5 mr-2 text-white" />
             Back
           </Button>
         </Link>

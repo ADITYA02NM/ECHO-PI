@@ -26,7 +26,7 @@ const AdminDashboard = () => {
           <div className="flex items-center gap-4">
             <Link to="/">
               <Button variant="ghost" size="sm">
-                <ArrowLeft className="h-5 w-5" />
+                <ArrowLeft className="h-5 w-5 text-primary" />
               </Button>
             </Link>
             <div className="flex items-center gap-2">
@@ -52,7 +52,7 @@ const AdminDashboard = () => {
         <div className="grid md:grid-cols-3 gap-4">
           <Card className="p-6">
             <div className="flex items-center gap-3 mb-2">
-              <AlertCircle className="h-6 w-6 text-emergency" />
+              <AlertCircle className="h-6 w-6 text-primary" />
               <h3 className="font-semibold text-foreground">Total SOS Alerts</h3>
             </div>
             <p className="text-3xl font-bold text-foreground">{stats.totalSOS}</p>
@@ -68,10 +68,10 @@ const AdminDashboard = () => {
 
           <Card className="p-6">
             <div className="flex items-center gap-3 mb-2">
-              <Wifi className="h-6 w-6 text-success" />
+              <Wifi className="h-6 w-6 text-primary" />
               <h3 className="font-semibold text-foreground">Node Status</h3>
             </div>
-            <p className="text-lg text-success font-semibold">{stats.nodeStatus}</p>
+            <p className="text-lg text-primary font-semibold">{stats.nodeStatus}</p>
           </Card>
         </div>
 
@@ -80,7 +80,7 @@ const AdminDashboard = () => {
           <Link to="/admin/alerts">
             <Card className="p-6 hover:shadow-lg transition-shadow">
               <div className="flex items-center gap-3">
-                <AlertCircle className="h-8 w-8 text-emergency" />
+                <AlertCircle className="h-8 w-8 text-primary" />
                 <div>
                   <h3 className="font-semibold text-foreground">SOS Alerts Feed</h3>
                   <p className="text-sm text-muted-foreground">View and manage live SOS alerts</p>
@@ -104,7 +104,7 @@ const AdminDashboard = () => {
           <Link to="/admin/nodes">
             <Card className="p-6 hover:shadow-lg transition-shadow">
               <div className="flex items-center gap-3">
-                <Wifi className="h-8 w-8 text-success" />
+                <Wifi className="h-8 w-8 text-primary" />
                 <div>
                   <h3 className="font-semibold text-foreground">Node Management</h3>
                   <p className="text-sm text-muted-foreground">Check ESP32 node health</p>
@@ -116,7 +116,7 @@ const AdminDashboard = () => {
           <Link to="/">
             <Card className="p-6 hover:shadow-lg transition-shadow">
               <div className="flex items-center gap-3">
-                <Users className="h-8 w-8 text-accent" />
+                <Users className="h-8 w-8 text-primary" />
                 <div>
                   <h3 className="font-semibold text-foreground">Return to User Mode</h3>
                   <p className="text-sm text-muted-foreground">Switch back to user interface</p>

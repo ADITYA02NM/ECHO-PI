@@ -30,7 +30,7 @@ const AdminLogin = () => {
       <header className="p-4">
         <Link to="/">
           <Button variant="ghost" size="sm">
-            <ArrowLeft className="h-5 w-5 mr-2" />
+            <ArrowLeft className="h-5 w-5 mr-2 text-primary" />
             Back to Home
           </Button>
         </Link>

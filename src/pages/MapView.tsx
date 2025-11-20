@@ -13,7 +13,7 @@ const MapView = () => {
         <div className="max-w-4xl mx-auto flex items-center gap-4">
           <Link to="/">
             <Button variant="ghost" size="sm">
-              <ArrowLeft className="h-5 w-5" />
+              <ArrowLeft className="h-5 w-5 text-primary" />
             </Button>
           </Link>
           <div className="flex items-center gap-2">
@@ -27,7 +27,7 @@ const MapView = () => {
       <main className="flex-1 relative">
         <div className="absolute inset-0 bg-muted flex items-center justify-center">
           <div className="text-center space-y-2">
-            <Map className="h-16 w-16 text-muted-foreground mx-auto" />
+            <Map className="h-16 w-16 text-primary mx-auto" />
             <p className="text-muted-foreground">
               Map tiles loaded from http://192.168.4.1:8000/tiles/
             </p>
@@ -42,14 +42,14 @@ const MapView = () => {
             onClick={() => setZoom((z) => Math.min(18, z + 1))}
             className="rounded-full h-10 w-10 p-0 shadow-lg"
           >
-            <ZoomIn className="h-5 w-5" />
+            <ZoomIn className="h-5 w-5 text-white" />
           </Button>
           <Button
             size="sm"
             onClick={() => setZoom((z) => Math.max(1, z - 1))}
             className="rounded-full h-10 w-10 p-0 shadow-lg"
           >
-            <ZoomOut className="h-5 w-5" />
+            <ZoomOut className="h-5 w-5 text-white" />
           </Button>
         </div>
       </main>
