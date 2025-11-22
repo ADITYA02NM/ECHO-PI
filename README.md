@@ -13,7 +13,7 @@ ECHO-Pi is a comprehensive offline assistant designed for emergency situations a
 
 ## 🎥 Demo
 
-![Project Demo](ScreenRecording.mov)
+![Project Demo](ScreenRecording.mp4)
 
 ## 🛠️ Tech Stack
 
