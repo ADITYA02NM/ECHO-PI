@@ -1,54 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FileText, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
-
-interface Guide {
-  id: string;
-  title: string;
-  description: string;
-}
+import { emergencyGuides } from "@/data/emergencyGuides";
 
 const Guides = () => {
-  const [guides, setGuides] = useState<Guide[]>([]);
   const [selectedGuide, setSelectedGuide] = useState<string | null>(null);
-  const [guideContent, setGuideContent] = useState("");
-  const { toast } = useToast();
 
-  useEffect(() => {
-    fetchGuides();
-  }, []);
-
-  const fetchGuides = async () => {
-    try {
-      const response = await fetch("http://192.168.4.1:8000/guides/list");
-      const data = await response.json();
-      setGuides(data.guides || []);
-    } catch (error) {
-      toast({
-        title: "Failed to Load Guides",
-        description: "Could not fetch emergency guides.",
-        variant: "destructive",
-      });
-    }
+  const loadGuide = (id: string) => {
+    setSelectedGuide(id);
   };
 
-  const loadGuide = async (id: string) => {
-    try {
-      const response = await fetch(`http://192.168.4.1:8000/guides/${id}`);
-      const data = await response.json();
-      setGuideContent(data.content || "Content not available");
-      setSelectedGuide(id);
-    } catch (error) {
-      toast({
-        title: "Failed to Load Guide",
-        description: "Could not fetch guide content.",
-        variant: "destructive",
-      });
-    }
-  };
+  const currentGuide = emergencyGuides.find(g => g.id === selectedGuide);
 
   return (
     <div className="min-h-screen bg-background">
@@ -71,7 +35,7 @@ const Guides = () => {
       <main className="max-w-4xl mx-auto px-4 py-6">
         {!selectedGuide ? (
           <div className="space-y-3">
-            {guides.map((guide) => (
+            {emergencyGuides.map((guide) => (
               <Card
                 key={guide.id}
                 className="p-4 hover:shadow-lg transition-shadow cursor-pointer"
@@ -89,8 +53,9 @@ const Guides = () => {
               Back to guides
             </Button>
             <Card className="p-6">
-              <div className="prose max-w-none text-foreground">
-                <div dangerouslySetInnerHTML={{ __html: guideContent }} />
+              <h2 className="text-3xl font-bold text-primary mb-6">{currentGuide?.title}</h2>
+              <div className="text-foreground leading-relaxed">
+                <div dangerouslySetInnerHTML={{ __html: currentGuide?.content || "" }} />
               </div>
             </Card>
           </div>

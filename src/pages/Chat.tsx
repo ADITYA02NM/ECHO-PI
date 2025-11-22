@@ -40,13 +40,13 @@ const Chat = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://192.168.4.1:8000/ask", {
+      const response = await fetch("http://10.178.17.91:8000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: messageText }),
+        body: JSON.stringify({ message: messageText }),
       });
       const data = await response.json();
-      const assistantMessage: Message = { role: "assistant", content: data.answer || "No response" };
+      const assistantMessage: Message = { role: "assistant", content: data.response || "No response" };
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (error) {
       const errorMessage: Message = {

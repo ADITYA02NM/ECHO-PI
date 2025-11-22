@@ -66,8 +66,8 @@ const Home = () => {
         <div>
           <h2 className="text-lg font-semibold text-foreground mb-4">Features</h2>
           <div className="grid grid-cols-2 gap-4">
-            <FeatureCard title="Offline Wikipedia" icon={BookOpen} href="/wiki" color="primary" />
-            <FeatureCard title="Offline Maps" icon={Map} href="/map" color="primary" />
+            <FeatureCard title="Offline Wikipedia" icon={BookOpen} href="http://10.178.17.91:8090/viewer#wikipedia/Wikipedia%3AOffline" color="primary" />
+            <FeatureCard title="Offline Maps" icon={Map} href="https://omaps.app/Yxx0s4fXR8" color="primary" />
             <FeatureCard title="Translator" icon={Languages} href="/translator" color="accent" />
             <FeatureCard title="Emergency Guides" icon={FileText} href="/guides" color="accent" />
           </div>

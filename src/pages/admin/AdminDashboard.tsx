@@ -16,6 +16,23 @@ const AdminDashboard = () => {
     if (!localStorage.getItem("adminAuth")) {
       window.location.href = "/admin/login";
     }
+
+    // Fetch SOS stats
+    const fetchStats = async () => {
+      try {
+        const response = await fetch("http://192.168.4.1:8000/admin/stats");
+        const data = await response.json();
+        setStats({
+          totalSOS: data.totalSOS || 0,
+          lastSOS: data.lastSOS || "N/A",
+          nodeStatus: data.nodeStatus || "Unknown",
+        });
+      } catch (error) {
+        console.error("Failed to fetch stats");
+      }
+    };
+
+    fetchStats();
   }, []);
 
   return (

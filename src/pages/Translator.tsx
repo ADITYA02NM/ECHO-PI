@@ -16,13 +16,11 @@ const Translator = () => {
 
     setIsTranslating(true);
     try {
-      const response = await fetch("http://192.168.4.1:8000/translate", {
+      const response = await fetch("http://localhost:5001/translate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           text: inputText,
-          source: "en",
-          target: "hi",
         }),
       });
       const data = await response.json();
@@ -63,7 +61,7 @@ const Translator = () => {
           </div>
           <ArrowRight className="h-6 w-6 text-primary" />
           <div className="text-center">
-            <p className="font-semibold text-foreground">Hindi</p>
+            <p className="font-semibold text-foreground">Kannada</p>
           </div>
         </div>
 

@@ -6,11 +6,11 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 const SOS = () => {
-  const [isTriggering, setIsTriggering] = useState(false);
+  const [isTriggering, setIsTriggerging] = useState(false);
   const { toast } = useToast();
 
   const handleTriggerSOS = async () => {
-    setIsTriggering(true);
+    setIsTriggerging(true);
     try {
       const response = await fetch("http://192.168.4.1:8000/sos/trigger", {
         method: "POST",
@@ -24,6 +24,16 @@ const SOS = () => {
           description: "Emergency services have been notified.",
           variant: "default",
         });
+
+        // Log the SOS event in the admin panel
+        await fetch("http://192.168.4.1:8000/admin/logs", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            timestamp: new Date().toISOString(),
+            details: "SOS triggered from the app."
+          }),
+        });
       } else {
         throw new Error("Failed to send SOS");
       }
@@ -34,7 +44,7 @@ const SOS = () => {
         variant: "destructive",
       });
     } finally {
-      setIsTriggering(false);
+      setIsTriggerging(false);
     }
   };
 

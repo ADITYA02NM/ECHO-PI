@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Offline Translator
+model/
+offline_translator/venv/
+old_frontend_backup/
+__pycache__/
