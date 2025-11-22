@@ -28,3 +28,4 @@ model/
 offline_translator/venv/
 old_frontend_backup/
 __pycache__/
+*.mov

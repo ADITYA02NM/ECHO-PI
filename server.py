@@ -16,6 +16,9 @@ except Exception as e:
     print(f"Error loading model: {e}")
     translator = None
 
+# Global stats
+sos_counter = 0
+
 @app.route('/translate', methods=['POST'])
 def translate_text():
     if not translator:
@@ -35,6 +38,20 @@ def translate_text():
     except Exception as e:
         print(f"Translation error: {e}")
         return jsonify({"error": str(e)}), 500
+
+@app.route('/sos/alert', methods=['POST'])
+def trigger_sos():
+    global sos_counter
+    sos_counter += 1
+    return jsonify({"status": "alert_received", "total_alerts": sos_counter})
+
+@app.route('/admin/stats', methods=['GET'])
+def get_stats():
+    return jsonify({
+        "totalSOS": sos_counter,
+        "lastSOS": "Just now" if sos_counter > 0 else "N/A",
+        "nodeStatus": "Active"
+    })
 
 @app.route('/health', methods=['GET'])
 def health_check():

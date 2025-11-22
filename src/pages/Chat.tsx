@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Send, ArrowLeft, Shield } from "lucide-react";
+import { Send, ArrowLeft } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,6 +11,19 @@ interface Message {
   role: "user" | "assistant";
   content: string;
 }
+
+const PRESET_QUESTIONS = [
+  { q: "What is photosynthesis?", a: "Photosynthesis is the process by which green plants and some other organisms use sunlight to synthesize foods with the help of chlorophyll pigments." },
+  { q: "How does evaporation work?", a: "Evaporation is the process by which water changes from a liquid to a gas or vapor." },
+  { q: "What is the water cycle?", a: "The water cycle describes how water evaporates from the surface of the earth, rises into the atmosphere, cools and condenses into rain or snow in clouds, and falls again to the surface as precipitation." },
+  { q: "Define gravity.", a: "Gravity is a force which tries to pull two objects toward each other. Anything which has mass also has a gravitational pull." },
+  { q: "What are the three states of matter?", a: "The three states of matter are solid, liquid, and gas." },
+  { q: "What is the solar system?", a: "The solar system consists of the Sun and everything that orbits, or travels around, the Sun." },
+  { q: "How do plants breathe?", a: "Plants breathe through tiny pores called stomata, located on the underside of their leaves." },
+  { q: "What is an atom?", a: "An atom is the smallest unit of ordinary matter that forms a chemical element." },
+  { q: "Why is the sky blue?", a: "The sky is blue because of Rayleigh scattering. As sunlight reaches Earth's atmosphere, it is scattered in all directions by all the gases and particles in the air." },
+  { q: "What is force?", a: "A force is a push or a pull upon an object resulting from the object's interaction with another object." },
+];
 
 const Chat = () => {
   const [searchParams] = useSearchParams();
@@ -38,6 +51,21 @@ const Chat = () => {
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setIsLoading(true);
+
+    // Check for preset questions first
+    // Normalize strings for comparison: lowercase, trim, remove trailing punctuation
+    const normalize = (str: string) => str.toLowerCase().trim().replace(/[?.,!]+$/, "");
+
+    const preset = PRESET_QUESTIONS.find(p => normalize(p.q) === normalize(messageText));
+
+    if (preset) {
+      setTimeout(() => {
+        const assistantMessage: Message = { role: "assistant", content: preset.a };
+        setMessages((prev) => [...prev, assistantMessage]);
+        setIsLoading(false);
+      }, 500); // Simulate slight delay
+      return;
+    }
 
     try {
       const response = await fetch("http://10.178.17.91:8000/chat", {
@@ -81,23 +109,35 @@ const Chat = () => {
         <div className="max-w-4xl mx-auto space-y-4">
           {messages.length === 0 && (
             <div className="flex flex-col items-center justify-center py-12 text-center">
-              <img 
-                src={aiChatIllustration} 
-                alt="AI Assistant" 
+              <img
+                src={aiChatIllustration}
+                alt="AI Assistant"
                 className="w-48 h-48 mb-6 animate-fade-in"
               />
               <h2 className="text-2xl font-bold text-foreground mb-2">Ask me anything!</h2>
-              <p className="text-muted-foreground">I'm here to help with your questions, offline.</p>
+              <p className="text-muted-foreground mb-8">I'm here to help with your questions, offline.</p>
+
+              <div className="flex flex-wrap justify-center gap-2 max-w-2xl">
+                {PRESET_QUESTIONS.map((q, idx) => (
+                  <Button
+                    key={idx}
+                    variant="outline"
+                    className="rounded-full bg-card hover:bg-primary hover:text-primary-foreground transition-colors"
+                    onClick={() => handleSend(q.q)}
+                  >
+                    {q.q}
+                  </Button>
+                ))}
+              </div>
             </div>
           )}
           {messages.map((msg, idx) => (
             <div key={idx} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
               <Card
-                className={`max-w-[80%] p-4 ${
-                  msg.role === "user"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-card text-card-foreground"
-                }`}
+                className={`max-w-[80%] p-4 ${msg.role === "user"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-card text-card-foreground"
+                  }`}
               >
                 <p className="text-sm">{msg.content}</p>
               </Card>

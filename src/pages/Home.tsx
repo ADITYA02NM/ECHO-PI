@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-background pb-24 relative overflow-hidden">
       {/* Background Pattern */}
-      <div 
+      <div
         className="fixed inset-0 z-0 opacity-30"
         style={{
           backgroundImage: `url(${backgroundPattern})`,
@@ -37,9 +37,9 @@ const Home = () => {
       <main className="max-w-4xl mx-auto px-4 py-6 space-y-8 relative z-10">
         {/* Hero Illustration */}
         <div className="flex justify-center mb-6 animate-fade-in">
-          <img 
-            src={heroIllustration} 
-            alt="ECHO-Pi Hero" 
+          <img
+            src={heroIllustration}
+            alt="ECHO-Pi Hero"
             className="w-full max-w-md h-auto rounded-2xl"
           />
         </div>
@@ -85,7 +85,9 @@ const Home = () => {
       </main>
 
       {/* Floating SOS Button */}
-      <Link to="/sos">
+      <Link to="/sos" onClick={() => {
+        fetch("http://localhost:5001/sos/alert", { method: "POST" }).catch(console.error);
+      }}>
         <Button
           size="lg"
           className="fixed bottom-8 left-1/2 -translate-x-1/2 h-20 w-20 rounded-full shadow-2xl bg-emergency hover:bg-emergency/90 border-4 border-card z-50"

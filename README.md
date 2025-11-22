@@ -1,73 +1,128 @@
-# Welcome to your Lovable project
+# ECHO-Pi: Offline Emergency & Education Assistant
 
-## Project info
+ECHO-Pi is a comprehensive offline assistant designed for emergency situations and educational support in connectivity-deprived areas. It features an offline English-to-Kannada translator, an AI chat assistant with educational presets, SOS emergency alerts, and access to offline resources like Wikipedia and Maps.
 
-**URL**: https://lovable.dev/projects/a6a796d4-fab5-4f20-854f-86b9e3815439
+## 🚀 Features
 
-## How can I edit this code?
+-   **Offline Translator**: Translates English text to Kannada using a local AI model (`Helsinki-NLP/opus-mt-en-dra`), functioning completely without internet.
+-   **Offline AI Assistant**: A chat interface with preset educational questions (e.g., "What is photosynthesis?") that provides instant answers.
+-   **SOS Emergency Alert**: A dedicated SOS button that triggers an alert counter on the Admin Dashboard.
+-   **Admin Dashboard**: A secure area to view system stats, including the total number of SOS alerts triggered.
+-   **Offline Resources**: Integration with offline Wikipedia and Maps (via external links/services).
+-   **Responsive Design**: Built with React and Tailwind CSS for a seamless experience on various devices.
 
-There are several ways of editing your application.
+## 🎥 Demo
 
-**Use Lovable**
+![Project Demo](ScreenRecording.mov)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a6a796d4-fab5-4f20-854f-86b9e3815439) and start prompting.
+## 🛠️ Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+-   **Frontend**: React, Vite, TypeScript, Tailwind CSS, Shadcn UI.
+-   **Backend**: Python, Flask.
+-   **AI Model**: Hugging Face Transformers (`Helsinki-NLP/opus-mt-en-dra`).
+-   **Database**: In-memory storage for demo purposes (SOS counters).
 
-**Use your preferred IDE**
+## 📋 Prerequisites
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Before you begin, ensure you have the following installed:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+-   **Node.js** (v18 or higher)
+-   **Python** (v3.8 or higher)
+-   **Git**
 
-Follow these steps:
+## ⚙️ Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/ADITYA02NM/ECHO-PI.git
+    cd ECHO-PI
+    ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2.  **Install Frontend Dependencies:**
+    ```bash
+    npm install
+    ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3.  **Setup Backend & Offline Translator:**
+    *   Create a virtual environment:
+        ```bash
+        python3 -m venv offline_translator/venv
+        ```
+    *   Activate the virtual environment:
+        *   **Mac/Linux:** `source offline_translator/venv/bin/activate`
+        *   **Windows:** `offline_translator\venv\Scripts\activate`
+    *   Install Python dependencies:
+        ```bash
+        pip install -r offline_translator/requirements.txt
+        pip install flask flask-cors
+        ```
+    *   **Download the Translation Model:**
+        (This requires internet access for the initial setup only)
+        ```bash
+        python offline_translator/setup_model.py
+        ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## 🏃‍♂️ Running the Application
+
+You need to run the backend and frontend in **two separate terminal windows**.
+
+### Terminal 1: Backend Server
+Starts the Flask server for the translator and SOS API on port `5001`.
+
+```bash
+# Make sure your virtual environment is activated
+# source offline_translator/venv/bin/activate
+
+./offline_translator/venv/bin/python server.py
+```
+
+### Terminal 2: Frontend Application
+Starts the React application on port `8080` (or similar).
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Open your browser and navigate to the URL shown in the terminal (usually `http://localhost:8080`).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📖 Usage Guide
 
-**Use GitHub Codespaces**
+### 1. Translator
+-   Navigate to the **Translator** page.
+-   Type English text into the input box.
+-   Click **Translate** to see the Kannada translation.
+-   *Note: The backend server must be running for this to work.*
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### 2. AI Assistant (Chat)
+-   Navigate to the **AI Assistant** page.
+-   Click on any of the **preset questions** (e.g., "Define gravity") to get an instant answer.
+-   *Note: Custom queries will attempt to hit the backend but currently only presets are fully supported for the demo.*
 
-## What technologies are used for this project?
+### 3. SOS Alert
+-   On the **Home** page, click the red **SOS Button** at the bottom.
+-   This sends an alert to the backend.
+-   To verify, go to **Settings > Switch to Admin Mode** (Login required).
+-   The **Admin Dashboard** will show the updated "Total SOS Alerts" count.
 
-This project is built with:
+## 📂 Project Structure
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```
+ECHO-PI/
+├── offline_translator/     # Python backend & translator logic
+│   ├── venv/               # Virtual environment (not in git)
+│   ├── model/              # Downloaded AI model (not in git)
+│   ├── translator.py       # Translator class
+│   └── setup_model.py      # Script to download model
+├── src/                    # React Frontend source code
+│   ├── components/         # Reusable UI components
+│   ├── pages/              # App pages (Home, Chat, Translator, Admin)
+│   └── ...
+├── server.py               # Flask API server (entry point for backend)
+├── package.json            # Frontend dependencies
+└── README.md               # Project documentation
+```
 
-## How can I deploy this project?
+## 🤝 Contributing
 
-Simply open [Lovable](https://lovable.dev/projects/a6a796d4-fab5-4f20-854f-86b9e3815439) and click on Share -> Publish.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
